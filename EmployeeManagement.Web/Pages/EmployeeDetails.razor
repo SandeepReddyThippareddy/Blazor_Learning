@@ -1,0 +1,35 @@
+﻿@page "/EmployeeDetails/{id}"
+@inherits EmployeeDetailsBase
+
+@if (Employee == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-8">
+            <div class="employeedetails-card">
+                <div class="card-title text-center">
+                    <h1>@Employee.FirstName @Employee.LastName</h1>
+                    <span class="text-right">@Coordinates</span>
+                </div>
+
+                <div class="card-body text-center">
+                    <img class="card-img-top imageThumbnail"
+                         src="https://cdn4.iconfinder.com/data/icons/people-avatar-1-1/128/29-512.png" @onmousemove="@Mouse_Move" />
+
+                    <h4>Employee ID : @Employee.EmployeeId</h4>
+                    <h4>Email : @Employee.Email</h4>
+                    <h4>Department : @(Employee.Department != null ? Employee.Department.DepartmentName : "No Valid Department" )</h4>
+                </div>
+                <button @onclick="Hide_Footer" class="btn btn-outline-dark btn-sm float-left">@FooterButtonText</button>
+                <div class="text-center @FooterCSSClass float-right">
+                    <a href="/" class="btn btn-outline-dark btn-sm">Back</a>
+                    <a href="@($"EmployeeEdit/{Employee.EmployeeId}")" class="btn btn-outline-dark btn-sm">Edit</a>
+                    <a href="" class="btn btn-outline-dark btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
