@@ -1,9 +1,14 @@
 ﻿@page "/EmployeeEdit/{id}"
 @inherits EmployeeEditBase
+@using EmployeeManagement.Components
+@using EmployeeManagement.Models.Models
 
-<EditForm Model="@Employee">
+<EditForm Model="@Employee" OnValidSubmit="HandleValidSubmit">
     <h3>Edit Employee</h3>
     <hr />
+    <DataAnnotationsValidator/> @*Validations wll not work for complex types(navigation properties)*@
+    @*<ObjectGraphDataAnnotationsValidator/>*@
+    <ValidationSummary />
     <div class="form-group row">
         <label for="firstName" class="col-sm-2 col-form-label">
             First Name
@@ -11,6 +16,7 @@
         <div class="col-sm-10">
             <InputText id="firstName" class="form-control" placeholder="First Name"
                        @bind-Value="Employee.FirstName" />
+            <ValidationMessage For="@(() => Employee.FirstName)" />
         </div>
     </div>
     <div class="form-group row">
@@ -20,6 +26,7 @@
         <div class="col-sm-10">
             <InputText id="lastName" class="form-control" placeholder="Last Name"
                        @bind-Value="Employee.LastName" />
+            <ValidationMessage For="@(() => Employee.LastName)" />
         </div>
     </div>
     <div class="form-group row">
@@ -29,6 +36,54 @@
         <div class="col-sm-10">
             <InputText id="email" class="form-control" placeholder="Email"
                        @bind-Value="Employee.Email" />
+            <ValidationMessage For="@(() => Employee.Email)" />
         </div>
     </div>
+    <div class="form-group row">
+        <label for="dob" class="col-sm-2 col-form-label">
+            Date of Birth
+        </label>
+        <div class="col-sm-10">
+            <InputDate id="dob" class="form-control" placeholder="Date of Birth"
+                       @bind-Value="Employee.DateOfBrith" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="gender" class="col-sm-2 col-form-label">
+            Gender
+        </label>
+        <div class="col-sm-10">
+            <InputSelect id="gender" class="form-control" placeholder="Gender"
+                         @bind-Value="Employee.Gender">
+                @foreach (var gender in Enum.GetValues(typeof(Gender)))
+                {
+                    <option value="@gender">@gender</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="department" class="col-sm-2 col-form-label">
+            Department
+        </label>
+        <div class="col-sm-10">
+            <CustomInputSelect id="department" class="form-control" placeholder="Department"
+                               @bind-Value="Employee.DepartmentId">
+                @foreach (var dept in Departments)
+                {
+                    <option value="@dept.DepartmentId">@dept.DepartmentName</option>
+                }
+            </CustomInputSelect>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="reason" class="col-sm-2 col-form-label">
+            Reason
+        </label>
+        <div class="col-sm-10">
+            <textarea id="reason" class="form-control" placeholder="Reason" @bind="Reason" @bind:event="oninput" /><span class="text-danger"><b>Count: </b>@Reason.Length</span>
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
 </EditForm>

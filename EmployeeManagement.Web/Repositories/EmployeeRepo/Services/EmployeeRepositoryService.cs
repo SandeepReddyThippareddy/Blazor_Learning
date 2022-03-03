@@ -20,12 +20,12 @@ namespace EmployeeManagement.Web.Repositories.EmployeeRepo.Services
 
         public async Task<Employee> GetEmployeeAsync(string Id)
         {
-            return await _httpClient.GetJsonAsync<Employee>($"api/Employee/{Int32.Parse(Id)}");
+            return await _httpClient.GetJsonAsync<Employee>($"api/Employees/{Int32.Parse(Id)}");
         }
 
         public async Task<IEnumerable<Employee>> GetEmployeesAsync()
         {
-            return await _httpClient.GetJsonAsync<Employee[]>("api/Employee");
+            return await _httpClient.GetJsonAsync<Employee[]>("api/Employees");
         }
     }
 }

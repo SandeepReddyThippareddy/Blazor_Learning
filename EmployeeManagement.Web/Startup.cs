@@ -1,4 +1,5 @@
-using EmployeeManagement.Web.Data;
+using EmployeeManagement.Web.Repositories.DepartmentRepo.Interfaces;
+using EmployeeManagement.Web.Repositories.DepartmentRepo.Services;
 using EmployeeManagement.Web.Repositories.EmployeeRepo.Interfaces;
 using EmployeeManagement.Web.Repositories.EmployeeRepo.Services;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,10 @@ namespace EmployeeManagement.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddHttpClient<IDepartmentRepositoryService, DepartmentRepositoryService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44377/");
+            });
             services.AddHttpClient<IEmployeeRepositoryService, EmployeeRepositoryService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:44377/");

@@ -14,11 +14,11 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
-    public class EmployeeController : ControllerBase
+    public class EmployeesController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger<EmployeeController> _logger;
-        public EmployeeController(IUnitOfWork unitOfWork, ILogger<EmployeeController> logger)
+        private readonly ILogger<EmployeesController> _logger;
+        public EmployeesController(IUnitOfWork unitOfWork, ILogger<EmployeesController> logger)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;

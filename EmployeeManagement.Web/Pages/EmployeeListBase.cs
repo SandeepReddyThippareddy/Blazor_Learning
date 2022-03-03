@@ -15,6 +15,8 @@ namespace EmployeeManagement.Web.Pages
 
         public IEnumerable<Employee> Employees { get; set; }
 
+        protected int SelectedEmployeeCount { get; set; } = 0;
+
         protected override async Task OnInitializedAsync()
         {
             try
@@ -25,6 +27,18 @@ namespace EmployeeManagement.Web.Pages
             {
 
                 throw;
+            }
+        }
+
+        protected void OnCheckbox_Changed(bool isSelcted)
+        {
+            if (isSelcted)
+            {
+                SelectedEmployeeCount++;
+            }
+            else
+            {
+                SelectedEmployeeCount--;
             }
         }
     }

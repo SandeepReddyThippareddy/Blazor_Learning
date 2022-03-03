@@ -77,21 +77,11 @@ a, .btn-link {
 }
 
 .card {
-    padding: 25px;
-    margin: 25px;
-    border-radius: 20px;
-    background-color: lightblue;
-    height: 400px;
-    overflow: hidden;
+    height: 350px;
 }
 
     .employeedetails-card {
-        padding: 25px;
-        margin: 25px;
-        border-radius: 20px;
-        background-color: lightblue;
-        height: 500px;
-        overflow: hidden;
+        height: 350px;
     }
 
 .hideFooter{

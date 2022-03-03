@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using EmployeeManagement.BLL.Core.IRepositories;
+using EmployeeManagement.BLL.Core.Repositories;
 using EmployeeManagement.Models.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
@@ -20,6 +22,7 @@ namespace WebAPI.BLL.Data
         public IUserRepository UserRepository { get; private set; }
 
         public IEmployeeRepository EmployeeRepository { get; private set; }
+        public IDepartmentRepository DepartmentRepository  { get; private set; }
 
         public UnitOfWork(UserManager<ApplicationUser> userManager, IOptions<JwtSetting> options, WebApiContext webApiContext, ILoggerFactory logger)
         {
@@ -29,6 +32,7 @@ namespace WebAPI.BLL.Data
             _jwtSetting = options.Value;
             UserRepository = new UserRepository(_context, _logger);
             EmployeeRepository = new EmployeeRepository(_userManager, _jwtSetting, _context, _logger);
+            DepartmentRepository = new DepartmentRepository(_context, _logger);
         }
 
         //Another way of instantiating the repositories.

@@ -1,0 +1,23 @@
+﻿@inherits DisplayEmployeeBase
+
+<div class="col-sm-4">
+    <div class="card">
+        <img class="card-img-top imageThumbnail"
+             src="https://cdn4.iconfinder.com/data/icons/people-avatar-1-1/128/29-512.png" />
+        <hr />
+        <div class="card-block">
+            <h6 class=" float-left text-center">@Employee.FirstName.ToUpper() @Employee.LastName.ToUpper()</h6>
+            <input type="checkbox" class="float-right" @onchange="OnCheckboxStatusChanged" />
+
+        </div>
+        @if (ShowFooter)
+        {
+    <div class="text-center">
+        <a href="@($"EmployeeDetails/{Employee.EmployeeId}")" class="btn btn-outline-dark btn-sm">View</a>
+        <a href="@($"EmployeeEdit/{Employee.EmployeeId}")" class="btn btn-outline-dark btn-sm">Edit</a>
+        <a href="" class="btn btn-outline-dark btn-sm">Delete</a>
+    </div>
+        }
+
+    </div>
+</div>

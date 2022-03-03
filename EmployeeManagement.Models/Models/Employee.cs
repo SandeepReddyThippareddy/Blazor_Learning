@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeManagement.Models.CustomValidations;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagement.Models.Models
@@ -12,11 +13,14 @@ namespace EmployeeManagement.Models.Models
         [Required]
         public string LastName { get; set; }
         [Required]
+        [EmailAddress]
+        [EmailDomainValidator(AllowedDomain = "SANDEEPTECH.COM")]
         public string Email { get; set; }
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
         public int DepartmentId { get; set; }
         public string PhotoPath { get; set; }
+        //[ValidateComplexType]
         public Department Department { get; set; }
     }
 }

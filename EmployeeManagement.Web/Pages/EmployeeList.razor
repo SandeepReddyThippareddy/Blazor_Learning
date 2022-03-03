@@ -3,35 +3,19 @@
 
 
 <h3>Employee List</h3>
-
+<h4>Selected Employees - @SelectedEmployeeCount</h4>
 @if (Employees == null)
 {
     <div class="spinner"></div>
 }
 else
 {
-
     <div class="card-deck">
         <div class="container">
             <div class="row">
                 @foreach (var employee in Employees)
                 {
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <img class="card-img-top imageThumbnail"
-                                 src="https://cdn4.iconfinder.com/data/icons/people-avatar-1-1/128/29-512.png" />@*src="@employee.PhotoPath" />*@
-                                <hr />
-                                <div class="card-block">
-                                    <h6 class="card-title text-center">@employee.FirstName.ToUpper() @employee.LastName.ToUpper()</h6>
-                                </div>
-                                <hr />
-                                <div class="text-center">
-                                    <a href="@($"EmployeeDetails/{employee.EmployeeId}")" class="btn btn-outline-dark btn-sm">View</a>
-                                    <a href="" class="btn btn-outline-dark btn-sm">Edit</a>
-                                    <a href="" class="btn btn-outline-dark btn-sm">Delete</a>
-                                </div>
-                            </div>
-                        </div>
+                    <DisplayEmployee Employee="employee" OnCheckboxChanged="OnCheckbox_Changed"></DisplayEmployee>
                 }
             </div>
         </div>
