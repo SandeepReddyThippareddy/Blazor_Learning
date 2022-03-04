@@ -1,3 +1,4 @@
+using EmployeeManagement.Web.Profiles;
 using EmployeeManagement.Web.Repositories.DepartmentRepo.Interfaces;
 using EmployeeManagement.Web.Repositories.DepartmentRepo.Services;
 using EmployeeManagement.Web.Repositories.EmployeeRepo.Interfaces;
@@ -29,7 +30,11 @@ namespace EmployeeManagement.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            
             services.AddServerSideBlazor();
+            
+            services.AddAutoMapper(typeof(EmployeeProfile));
+
             services.AddHttpClient<IDepartmentRepositoryService, DepartmentRepositoryService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:44377/");

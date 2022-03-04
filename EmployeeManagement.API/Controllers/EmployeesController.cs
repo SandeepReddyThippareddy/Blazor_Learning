@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
                     return BadRequest();
 
                 // Add custom model validation error
-                var emp = _unitOfWork.EmployeeRepository.GetEmployeeByEmail(employee.Email);
+                var emp = await _unitOfWork.EmployeeRepository.GetEmployeeByEmail(employee.Email);
 
                 if (emp != null)
                 {
@@ -76,6 +76,8 @@ namespace WebAPI.Controllers
                 }
 
                 var createdEmployee = await _unitOfWork.EmployeeRepository.Add(employee);
+
+                 _unitOfWork.Complete();
 
                 return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.EmployeeId },
                     createdEmployee);

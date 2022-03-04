@@ -2,8 +2,15 @@
 @inherits EmployeeListBase
 
 
-<h3>Employee List</h3>
-<h4>Selected Employees - @SelectedEmployeeCount</h4>
+<div class="bg-light">
+    <div class="">
+        <h3>Employee List</h3>
+        <h4>Selected Employees - @SelectedEmployeeCount</h4>
+        <a href="@("/AddNewEmployee")" class="btn btn-outline-dark btn-sm float-right">Add New Employee</a>
+    </div>
+</div>
+
+
 @if (Employees == null)
 {
     <div class="spinner"></div>

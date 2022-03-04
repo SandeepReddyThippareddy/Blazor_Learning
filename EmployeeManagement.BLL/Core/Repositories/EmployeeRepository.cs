@@ -115,11 +115,11 @@ namespace WebAPI.BLL.Core.Repositories
                 existingUser.Email = entity.Email;
                 existingUser.PhotoPath = entity.PhotoPath;
 
-
+                _dbSet.Update(existingUser);
                 return true;
 
             }
-
+            
 
         }
 

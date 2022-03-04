@@ -10,5 +10,7 @@ namespace EmployeeManagement.Web.Repositories.EmployeeRepo.Interfaces
     {
         Task<IEnumerable<Employee>> GetEmployeesAsync();
         Task<Employee> GetEmployeeAsync(string Id);
+        Task<Employee> UpdateEmployeeAsync(Employee employee);
+        Task<Employee> CreateEmployeeAsync(Employee employee);
     }
 }
